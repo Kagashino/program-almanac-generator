@@ -6,6 +6,7 @@ Good luck.
 
 ## Installation
 > npm i programmer-almanac
+
 or
 > yarn add programmer-almanac
 
@@ -16,6 +17,7 @@ in ES Module:
 import * as Almanac from 'programmer-almanac'
 Almanac.init(new Date())
 ```
+
 in commonjs
 ```
 const Almanac = require('programmer-almanac')
