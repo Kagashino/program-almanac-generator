@@ -1,6 +1,6 @@
 {
   "name": "programmer-almanac-generator",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Daily Almanac Event Caculator for programmer.",
   "main": "dist/index.js",
   "files": [
