@@ -3,6 +3,7 @@
   "version": "0.9.1",
   "description": "Daily Almanac Event Caculator for programmer.",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "files": [
     "dist",
     "src"
