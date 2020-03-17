@@ -5,22 +5,22 @@ Generate events of the day based on date you've passed (default today).
 Good luck.
 
 ## Installation
-> npm i programmer-almanac
+> npm i programmer-almanac-generator
 
 or
-> yarn add programmer-almanac
+> yarn add programmer-almanac-generator
 
 ## Usage
 
 in ES Module:
 ```
-import * as Almanac from 'programmer-almanac'
+import * as Almanac from 'programmer-almanac-generator'
 Almanac.init(new Date())
 ```
 
 in commonjs
 ```
-const Almanac = require('programmer-almanac')
+const Almanac = require('programmer-almanac-generator')
 const almanac = Almanac.init(new date)
 ```
 
@@ -33,7 +33,7 @@ const almanac = Almanac.init(new date)
 
 use your own events
 ```
-import { generateAlmanac } from 'programmer-almanac'
+import { generateAlmanac } from 'programmer-almanac-generator'
 
 const CustomEvents = {
 	Activities: [],
