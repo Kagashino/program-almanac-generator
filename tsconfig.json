@@ -1,0 +1,4 @@
+{    
+  "incluce": ["src/**/*"],
+  "exclude": ["__test__/*"]
+}

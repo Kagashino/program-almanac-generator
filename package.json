@@ -1,0 +1,45 @@
+{
+  "name": "programmer-almanac-generator",
+  "version": "0.9.0",
+  "description": "Daily Almanac Event Caculator for programmer.",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "typings": ".src/types.ts",
+  "scripts": {
+    "build": "rollup --config",
+    "test": "jest"
+  },
+  "author": "Kagashino",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
+    "@types/jest": "^25.1.4",
+    "jest": "^25.1.0",
+    "rollup": "^2.0.6",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {},
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-typescript"
+    ]
+  },
+  "jest": {
+    "testMatch": [
+      "**/__tests__/*.test.ts"
+    ]
+  }
+}
