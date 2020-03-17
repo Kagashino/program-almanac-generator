@@ -1,13 +1,14 @@
 {
   "name": "programmer-almanac-generator",
-  "version": "0.9.0",
+  "version": "0.9.3",
   "description": "Daily Almanac Event Caculator for programmer.",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "files": [
     "dist",
     "src"
   ],
-  "typings": ".src/types.ts",
+  "typings": ".src/types.d.ts",
   "scripts": {
     "build": "rollup --config",
     "test": "jest"
