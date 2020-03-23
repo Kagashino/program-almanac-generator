@@ -1,6 +1,6 @@
 {
   "name": "programmer-almanac-generator",
-  "version": "0.9.4",
+  "version": "0.9.3",
   "description": "Daily Almanac Event Caculator for programmer.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -14,10 +14,6 @@
     "test": "jest"
   },
   "author": "Kagashino",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vuejs/vue.git"
-  },
   "license": "MIT",
   "devDependencies": {
     "@babel/preset-env": "^7.8.7",
