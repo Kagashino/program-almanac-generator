@@ -8,7 +8,7 @@
     "dist",
     "src"
   ],
-  "typings": ".src/types.d.ts",
+  "typings": ".dist/types.d.ts",
   "scripts": {
     "build": "rollup --config",
     "test": "jest"

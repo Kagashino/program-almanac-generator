@@ -1,5 +1,36 @@
 import ProgrammerEvents from './programmerEvents'
-import { AlmanacResult, AlmanacEvents, AlmanacActivity, VarDate } from "./types";
+
+export type AlmanacActivity = {
+  name: string,
+  good: string,
+  bad: string,
+  weekend?: boolean
+}
+
+export type AlmanacEvents = {
+  Weeks: Array<string>
+  Activities: Array<AlmanacActivity>
+  Specials?: Array<{
+    date: string
+    type: string
+    name: string
+    description: string
+  }>
+  Directions: Array<string>
+  Tools: Array<string>
+  Variables: Array<string>
+  Drinks: Array<string>
+}
+
+
+export type AlmanacResult = {
+  todayStr: string
+  good: Array<AlmanacActivity>
+  bad: Array<AlmanacActivity>
+  direction: string
+  drink: string[]
+  rate: string
+}
 
 /**
  * create daySeed based on this prime number: 11117
@@ -15,7 +46,7 @@ export const random = (today: Date, indexSeed: number): number => {
     n = n * n % MOD;
   }
   return n;
-}
+};
 
 /**
  * get date string
@@ -25,7 +56,7 @@ export const random = (today: Date, indexSeed: number): number => {
 export const getTodayStr = (today: Date, weeks: string[]): string => {
   const d = today;
   return `今天是${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日 星期${weeks[d.getDay()]}`
-}
+};
 
 /**
  * return true if weekend
@@ -47,12 +78,12 @@ export const pickRandomItems = (today: Date, list: any[], size: number) => {
     picked.splice(index, 1);
   }
   return picked;
-}
+};
 
 /**
  * generate rate start ★/☆
- * @param num 评分数
- * @param max 满分
+ * @param num rate count
+ * @param max rate limit
  */
 export function rate (num: number, max: number = 5): string {
   let stars = '';
@@ -70,11 +101,11 @@ export function rate (num: number, max: number = 5): string {
  */
 export const fillRandom = (str: string, Assets: AlmanacEvents, date: Date): string => {
   const { Tools, Variables } = Assets;
-  const VARIALBE_SEED = 12;
+  const VARIABLE_SEED = 12;
   const TOOL_SEED = 11;
   const LINE_SEED = 12;
 
-  const VariableSeed = random(date, VARIALBE_SEED) % Variables.length;
+  const VariableSeed = random(date, VARIABLE_SEED) % Variables.length;
   const toolSeed = random(date, TOOL_SEED) % Tools.length;
   const lineSeed = random(date, LINE_SEED) % 247 + 30
   return str.replace(/(%v|%t|%l)/, (result: string): string => {
@@ -92,14 +123,14 @@ export const fillRandom = (str: string, Assets: AlmanacEvents, date: Date): stri
  * @param Assets events configuration set.
  * @param date @default new Date()
  */
-export const generateAlmanac = (Assets: AlmanacEvents, date: VarDate): AlmanacResult => {
+export const generateAlmanac = (Assets: AlmanacEvents, date = new Date()): AlmanacResult => {
   const { Activities, Directions, Drinks, Variables, Tools } = Assets;
   const GOOD_SEED = 98;
   const BAD_SEED = 87;
   const DIRECTION_SEED = 2;
   const RATE_SEED = 6;
 
-  const today = new Date(date);
+  const today = new Date(date.getTime());
   const weekend = isWeekend(today);
   const filteredActivities = Activities.filter((i: AlmanacActivity) => !weekend || i.weekend);
   const goodCount = random(today, GOOD_SEED) % 3 + 2;
@@ -120,6 +151,6 @@ export const generateAlmanac = (Assets: AlmanacEvents, date: VarDate): AlmanacRe
   }
 };
 
-export const init = (date?: VarDate): AlmanacResult => {
-  return generateAlmanac(ProgrammerEvents, date || Date.now())
-}
+export const init = (date = new Date()): AlmanacResult => {
+  return generateAlmanac(ProgrammerEvents as AlmanacEvents, date);
+};
