@@ -15,7 +15,9 @@ module.exports = [
 			}
 		],
 		plugins: [
-			typescript()
+			typescript({
+				tsconfig: 'tsconfig.json'
+			}),
 		]
 	},
 	{
@@ -26,4 +28,4 @@ module.exports = [
 			name: "ProgrammerEvents"
 		}
 	}
-]
+];

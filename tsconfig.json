@@ -1,4 +1,8 @@
-{    
-  "incluce": ["src/**/*"],
-  "exclude": ["__test__/*"]
+{
+  "include": ["src/**/*"],
+  "exclude": ["__tests__/*"],
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true
+  }
 }

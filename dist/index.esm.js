@@ -86,8 +86,8 @@ var pickRandomItems = function (today, list, size) {
 };
 /**
  * generate rate start ★/☆
- * @param num 评分数
- * @param max 满分
+ * @param num rate count
+ * @param max rate limit
  */
 function rate(num, max) {
     if (max === void 0) { max = 5; }
@@ -105,10 +105,10 @@ function rate(num, max) {
  */
 var fillRandom = function (str, Assets, date) {
     var Tools = Assets.Tools, Variables = Assets.Variables;
-    var VARIALBE_SEED = 12;
+    var VARIABLE_SEED = 12;
     var TOOL_SEED = 11;
     var LINE_SEED = 12;
-    var VariableSeed = random(date, VARIALBE_SEED) % Variables.length;
+    var VariableSeed = random(date, VARIABLE_SEED) % Variables.length;
     var toolSeed = random(date, TOOL_SEED) % Tools.length;
     var lineSeed = random(date, LINE_SEED) % 247 + 30;
     return str.replace(/(%v|%t|%l)/, function (result) {
@@ -126,12 +126,13 @@ var fillRandom = function (str, Assets, date) {
  * @param date @default new Date()
  */
 var generateAlmanac = function (Assets, date) {
+    if (date === void 0) { date = new Date(); }
     var Activities = Assets.Activities, Directions = Assets.Directions, Drinks = Assets.Drinks, Variables = Assets.Variables, Tools = Assets.Tools;
     var GOOD_SEED = 98;
     var BAD_SEED = 87;
     var DIRECTION_SEED = 2;
     var RATE_SEED = 6;
-    var today = new Date(date);
+    var today = new Date(date.getTime());
     var weekend = isWeekend(today);
     var filteredActivities = Activities.filter(function (i) { return !weekend || i.weekend; });
     var goodCount = random(today, GOOD_SEED) % 3 + 2;
@@ -152,7 +153,8 @@ var generateAlmanac = function (Assets, date) {
     };
 };
 var init = function (date) {
-    return generateAlmanac(ProgrammerEvents, date || Date.now());
+    if (date === void 0) { date = new Date(); }
+    return generateAlmanac(ProgrammerEvents, date);
 };
 
 export { fillRandom, generateAlmanac, getTodayStr, init, isWeekend, pickRandomItems, random, rate };
